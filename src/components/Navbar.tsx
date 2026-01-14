@@ -10,14 +10,11 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-black to-gray-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">MJ</span>
-            </div>
-            <span className="text-2xl tracking-tight">
-              <span className="font-bold bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">
-                MJ Jersey
-              </span>
-            </span>
+            <img 
+              src="/images/mj logo.png" 
+              alt="MJ Jersey" 
+              className="h-12 w-auto object-contain hover:scale-110 transition-transform cursor-pointer"
+            />
           </div>
 
           {/* Search Bar */}
