@@ -4,20 +4,17 @@ const categories = [
   {
     id: 1,
     name: 'Club Jerseys',
-    image:
-      'https://images.unsplash.com/photo-1763656813028-3eb492fa7bcf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjBjbHViJTIwamVyc2V5fGVufDF8fHx8MTc2ODQwNzQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'images/FC_Barcelona_(crest).svg.png',
   },
   {
     id: 2,
     name: 'Nation Jerseys',
-    image:
-      'https://images.unsplash.com/photo-1763656812756-3539efd3e301?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYXRpb25hbCUyMHRlYW0lMjBqZXJzZXl8ZW58MXx8fHwxNzY4NDA3NDc3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'images/afa.png',
   },
   {
     id: 3,
     name: 'Retro Jerseys',
-    image:
-      'https://images.unsplash.com/photo-1652638709641-40f9654721cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXRybyUyMHZpbnRhZ2UlMjBqZXJzZXl8ZW58MXx8fHwxNzY4NDA3NDc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'images/mut.png',
   },
 ];
 
@@ -49,9 +46,8 @@ export function Categories() {
     >
       <div className="max-w-7xl mx-auto">
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <h2 className="text-5xl font-bold bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent mb-4">
             Shop by Category
@@ -65,11 +61,10 @@ export function Categories() {
           {categories.map((category, index) => (
             <div
               key={category.id}
-              className={`flex flex-col items-center transition-all duration-700 ${
-                isVisible
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
-              }`}
+              className={`flex flex-col items-center transition-all duration-700 ${isVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+                }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="relative group cursor-pointer mb-6">

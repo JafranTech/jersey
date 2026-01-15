@@ -3,7 +3,15 @@ import { ChevronRight } from 'lucide-react';
 
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev: number) => (prev + 1) % 3);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,35 +41,45 @@ export function Hero() {
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
+      {/* Background Image Carousel */}
+      {/* Background Image Carousel */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1649771544464-03bedb456a4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMGplcnNleSUyMHN0YWRpdW18ZW58MXx8fHwxNzY4NDA3NDc3fDA&ixlib=rb-4.1.0&q=80&w=1080"
-          alt="Football Jersey"
-          className="w-full h-full object-cover"
+        {[
+          '/images/hero1.png',
+          '/images/hero2.png',
+          '/images/hero3.png'
+        ].map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Hero Background ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 ease-in-out ${index === currentImage ? 'opacity-100' : 'opacity-0'
+              }`}
+          />
+        ))}
+        {/* Overlay - Darker for Hero 1 (Text Overlay), Lighter for Hero 2 & 3 (Poster Art) */}
+        <div
+          className={`absolute inset-0 transition-all duration-1000 ${currentImage === 0 ? 'bg-black/50' : 'bg-black/20'
+            }`}
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
       </div>
 
       {/* Content */}
       <div
-        className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
+        className={`relative z-10 text-center px-6 max-w-4xl mx-auto transition-all duration-1000 ${isVisible && currentImage === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
       >
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-tight not-italic no-underline">
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-tight not-italic no-underline drop-shadow-lg">
           Wear Your
           <br />
-          <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-300">
             Passion
           </span>
         </h1>
-        <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-2xl mx-auto">
-          Premium football jersey collection for true fans
-        </p>
+
         <button
           onClick={handleExplore}
-          className="group bg-white text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 inline-flex items-center gap-3 shadow-2xl hover:shadow-white/20 hover:scale-105"
+          className="group bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 inline-flex items-center gap-3 shadow-xl hover:shadow-white/20 hover:scale-[1.02]"
         >
           Explore Collection
           <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
